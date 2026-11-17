@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>APS Enterprises | Asian Power Solution</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">APS <span>ENTERPRISES</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+
+    <p class="gold">ASIAN POWER SOLUTION</p>
+
+    <h1>
+        Powering Your Vision.<br>
+        <span>Designing Your Future.</span>
+    </h1>
+
+    <p>
+        Electrical | Interior | Warehouse | Fabrication
+    </p>
+
+    <a href="#services" class="btn">Explore Our Services</a>
+
+</section>
+
+<section id="about" class="about">
+
+    <p class="gold">WELCOME TO APS ENTERPRISES</p>
+
+    <h2>About Our Company</h2>
+
+    <p>
+        APS Enterprises provides quality electrical,
+        interior, warehouse and fabrication solutions.
+        We focus on quality, innovation and customer satisfaction.
+    </p>
+
+</section>
+
+<section id="services" class="services">
+
+    <p class="gold">WHAT WE DO</p>
+
+    <h2>Our Services</h2>
+
+    <div class="service-grid">
+
+        <div class="service-card">
+            ⚡
+            <h3>Electrical</h3>
+        </div>
+
+        <div class="service-card">
+            🏠
+            <h3>Interior Design</h3>
+        </div>
+
+        <div class="service-card">
+            🏢
+            <h3>Warehouse</h3>
+        </div>
+
+        <div class="service-card">
+            🔧
+            <h3>Fabrication</h3>
+        </div>
+
+        <div class="service-card">
+            🌿
+            <h3>Artificial Grass</h3>
+        </div>
+
+        <div class="service-card">
+            🪟
+            <h3>Wallpaper & Curtains</h3>
+        </div>
+
+    </div>
+
+</section>
+<section class="products" id="products">
+
+    <p class="gold">OUR COLLECTION</p>
+    <h2>Our Products</h2>
+    <p class="product-intro">
+        Explore our premium interior and flooring solutions.
+    </p>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/wallpaper.jpg') }}" alt="Wallpaper">
+            <div class="product-info">
+                <h3>Wallpaper</h3>
+                <p>Elegant wall designs for beautiful spaces.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Wallpaper" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/custom-wallpaper.jpg') }}" alt="Customized Wallpaper">
+            <div class="product-info">
+                <h3>Customized Wallpaper</h3>
+                <p>Personalized designs for your interiors.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Customized%20Wallpaper" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/curtains.jpg') }}" alt="Curtains">
+            <div class="product-info">
+                <h3>Curtains</h3>
+                <p>Stylish curtains for modern homes.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Curtains" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/glass-film.jpg') }}" alt="Decorative Glass Film">
+            <div class="product-info">
+                <h3>Decorative Glass Film</h3>
+                <p>Beautiful decorative glass solutions.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Decorative%20Glass%20Film" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/window-blinds.jpg') }}" alt="Window Blinds">
+            <div class="product-info">
+                <h3>Window Blinds</h3>
+                <p>Modern window covering solutions.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Window%20Blinds" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/gym-flooring.jpg') }}" alt="Gym Flooring">
+            <div class="product-info">
+                <h3>Gym Flooring</h3>
+                <p>Durable flooring for fitness spaces.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Gym%20Flooring" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/artificial-grass.jpg') }}" alt="Artificial Grass">
+            <div class="product-info">
+                <h3>Artificial Grass</h3>
+                <p>Green and attractive artificial lawns.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Artificial%20Grass" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/flooring.png') }}" alt="Flooring">
+            <div class="product-info">
+                <h3>Flooring</h3>
+                <p>Premium flooring for every space.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Flooring" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/vertical-garden.jpg') }}" alt="Vertical Garden">
+            <div class="product-info">
+                <h3>Vertical Garden</h3>
+                <p>Bring natural beauty to your walls.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Vertical%20Garden" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/louvers.jpg') }}"
+         alt="Louvers">
+
+            <div class="product-info">
+                <h3>Louvers</h3>
+                <p>Modern wall and ceiling decorative solutions.</p>
+
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20Louvers"
+                    class="btn">
+                    Enquire Now
+                </a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/pvc-panel.jpg') }}" alt="PVC Panel">
+            <div class="product-info">
+                <h3>PVC Panel</h3>
+                <p>Modern decorative PVC panel solutions.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20PVC%20Panel" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='images/pu-stone.jpg') }}" alt="PU Stone">
+            <div class="product-info">
+                <h3>PU Stone</h3>
+                <p>Elegant stone-look interior finishes.</p>
+                <a href="https://wa.me/919944519910?text=I%20am%20interested%20in%20PU%20Stone" class="btn">Enquire Now</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" class="contact">
+
+    <p class="gold">CONTACT US</p>
+
+    <h2>Let's Connect With Us</h2>
+
+    <p>Have a project in mind? Contact APS Enterprises for reliable solutions.</p>
+
+    <div class="contact-details">
+
+        <div class="contact-item">
+            <h3>Call Us</h3>
+            <p>99445 19910</p>
+            <p>99456 44379</p>
+        </div>
+
+        <div class="contact-item">
+            <h3>Visit Us</h3>
+            <p>No. 436, K.K. Road, Ganapathy Nagar,<br>
+            Villupuram - 605602.</p>
+        </div>
+
+    </div>
+
+    <div class="contact-buttons">
+
+        <a href="https://wa.me/919944519910" class="btn">
+            WhatsApp Us
+        </a>
+
+        <a class="btn btn-outline"
+           href="https://www.google.com/maps/search/?api=1&query=No.+436%2C+K.K.+Road%2C+Ganapathy+Nagar%2C+Villupuram+605602"
+           target="_blank" rel="noopener noreferrer">
+            View Location on Google Maps
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="site-footer">
+
+    <h3>APS <span>ENTERPRISES</span></h3>
+
+    <p>ASIAN POWER SOLUTION</p>
+
+    <p>Powering Your Vision. Designing Your Future.</p>
+
+    <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <p class="footer-copy">
+        © 2026 APS Enterprises. All Rights Reserved.
+    </p>
+
+</footer>
