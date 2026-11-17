@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 <body>
 
 <header>
@@ -31,18 +33,33 @@
 
 <section class="hero" id="home">
 
-    <p class="gold">ASIAN POWER SOLUTION</p>
+    <div class="hero-content">
 
-    <h1>
-        Powering Your Vision.<br>
-        <span>Designing Your Future.</span>
-    </h1>
+        <p class="gold">WELCOME TO APS ENTERPRISES</p>
 
-    <p>
-        Electrical | Interior | Warehouse | Fabrication
-    </p>
+        <h1>
+            Powering Your Vision.<br>
+            <span>Designing Your Future.</span>
+        </h1>
 
-    <a href="#services" class="btn">Explore Our Services</a>
+        <p class="hero-description">
+            ASIAN POWER SOLUTION – Delivering reliable electrical,
+            interior, warehouse and fabrication solutions
+            with quality and excellence.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#services" class="btn">Explore Our Services</a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+
+        <div class="hero-trust">
+            <span>Quality Solutions</span>
+            <span>Customer Focused</span>
+            <span>Professional Service</span>
+        </div>
+
+    </div>
 
 </section>
 
@@ -64,38 +81,49 @@
 
     <p class="gold">WHAT WE DO</p>
 
-    <h2>Our Services</h2>
+    <h2>Our Professional Services</h2>
+
+    <p class="service-intro">
+        Complete solutions for electrical, interiors
+        and commercial requirements.
+    </p>
 
     <div class="service-grid">
 
         <div class="service-card">
-            ⚡
-            <h3>Electrical</h3>
+            <span>⚡</span>
+            <h3>Electrical Solutions</h3>
+            <p>Electrical products and solutions for different requirements.</p>
         </div>
 
         <div class="service-card">
-            🏠
+            <span>🏠</span>
             <h3>Interior Design</h3>
+            <p>Interior products and decorative solutions for modern spaces.</p>
         </div>
 
         <div class="service-card">
-            🏢
-            <h3>Warehouse</h3>
+            <span>🏢</span>
+            <h3>Warehouse Solutions</h3>
+            <p>Solutions for warehouse and commercial space requirements.</p>
         </div>
 
         <div class="service-card">
-            🔧
-            <h3>Fabrication</h3>
+            <span>🔧</span>
+            <h3>Fabrication Works</h3>
+            <p>Fabrication solutions based on project requirements.</p>
         </div>
 
         <div class="service-card">
-            🌿
+            <span>🌿</span>
             <h3>Artificial Grass</h3>
+            <p>Decorative artificial grass for indoor and outdoor spaces.</p>
         </div>
 
         <div class="service-card">
-            🪟
+            <span>🪟</span>
             <h3>Wallpaper & Curtains</h3>
+            <p>Stylish wallpaper and curtain collections for interiors.</p>
         </div>
 
     </div>
@@ -252,6 +280,44 @@
 
     </div>
 
+    <div class="enquiry-form">
+
+    <h3>Send Your Enquiry</h3>
+    <p>Tell us about your requirements.</p>
+
+    <form id="enquiry-form" action="/enquiry" method="POST">
+
+        <input type="text" name="name"
+               placeholder="Your Name" required>
+
+        <input type="tel" name="phone"
+               placeholder="Mobile Number" required>
+
+        <input type="email" name="email"
+               placeholder="Email Address">
+
+        <select name="service" required>
+            <option value="">Select a Service</option>
+            <option>Electrical</option>
+            <option>Interior Design</option>
+            <option>Warehouse</option>
+            <option>Fabrication</option>
+            <option>Wallpaper & Curtains</option>
+            <option>Other Products</option>
+        </select>
+
+        <textarea name="message"
+                  placeholder="Your Requirement"
+                  rows="5" required></textarea>
+
+        <button type="submit" class="btn">
+            Submit Enquiry
+        </button>
+
+    </form>
+
+</div>
+
     <div class="contact-buttons">
 
         <a href="https://wa.me/919944519910" class="btn">
@@ -259,7 +325,7 @@
         </a>
 
         <a class="btn btn-outline"
-           href="https://www.google.com/maps/search/?api=1&query=No.+436%2C+K.K.+Road%2C+Ganapathy+Nagar%2C+Villupuram+605602"
+           href="https://maps.app.goo.gl/Kr8HTVEcGd7UVMpR9"
            target="_blank" rel="noopener noreferrer">
             View Location on Google Maps
         </a>

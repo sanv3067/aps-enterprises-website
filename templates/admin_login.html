@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APS Enterprises | Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="admin-login">
+
+    <div class="admin-login-box">
+
+        <h2>APS ENTERPRISES</h2>
+        <p>Administrator Login</p>
+
+        {% if error %}
+        <p class="login-error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+
+            <input type="text"
+                   name="username"
+                   placeholder="Admin Username"
+                   required>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Admin Password"
+                   required>
+
+            <button type="submit" class="btn">
+                Login
+            </button>
+
+        </form>
+
+        <a href="/">← Back to Website</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
