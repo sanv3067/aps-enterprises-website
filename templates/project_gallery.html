@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | APS ENTERPRISES</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <section class="projects-section">
+        <div class="section-title">
+            <h2>{{ title }}</h2>
+            <p>Our Completed Projects</p>
+        </div>
+
+        <div class="project-gallery">
+            {% for photo in photos %}
+            <img
+                src="{{ url_for('static', filename='images/projects/' ~ category ~ '/' ~ photo) }}"
+                alt="{{ title }}"
+                loading="lazy">
+            {% endfor %}
+        </div>
+
+        <p style="text-align:center; margin-top:20px;">
+            Total Photos: {{ photos|length }}
+        </p>
+
+        <div style="text-align:center; margin-top:25px;">
+            <a href="{{ url_for('home') }}">← Back to Home</a>
+        </div>
+    </section>
+
+</body>
+</html>

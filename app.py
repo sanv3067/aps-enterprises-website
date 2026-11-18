@@ -1,6 +1,7 @@
 import os
 
 from dotenv import load_dotenv
+from pathlib import Path
 from flask import (
     Flask, render_template, request,
     redirect, url_for, session
@@ -54,7 +55,64 @@ with app.app_context():
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    project_folder = Path(app.static_folder) / "images" / "projects"
+
+    categories = {
+        "electrical": "Electrical Works",
+        "fabrication": "Fabrication Works",
+        "flooring": "Flooring Works",
+        "interior": "Interior Works",
+        "wallpaper": "Wallpaper Works"
+    }
+
+    projects = {}
+
+    for folder, title in categories.items():
+        folder_path = project_folder / folder
+
+        photos = []
+        if folder_path.exists():
+            photos = sorted(
+                file.name for file in folder_path.iterdir()
+                if file.is_file()
+                and file.suffix.lower() in [".jpg", ".jpeg", ".png", ".webp"]
+            )
+
+        projects[title] = [
+            f"images/projects/{folder}/{photo}"
+            for photo in photos
+        ]
+
+    return render_template("index.html", projects=projects)
+@app.route("/projects/<category>")
+def project_gallery(category):
+
+    categories = {
+        "electrical": "Electrical Works",
+        "fabrication": "Fabrication Works",
+        "flooring": "Flooring Works",
+        "interior": "Interior Works",
+        "wallpaper": "Wallpaper Works"
+    }
+
+    if category not in categories:
+        return "Category Not Found", 404
+
+    folder = Path(app.static_folder) / "images" / "projects" / category
+
+    photos = sorted(
+        file.name for file in folder.iterdir()
+        if file.is_file()
+        and file.suffix.lower() in [".jpg", ".jpeg", ".png", ".webp"]
+    )
+
+    return render_template(
+        "project_gallery.html",
+        title=categories[category],
+        photos=photos,
+        category=category
+    )
+
 
 
 # CUSTOMER ENQUIRY
