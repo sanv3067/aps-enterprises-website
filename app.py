@@ -1,14 +1,13 @@
 import os
-import sqlite3
 
 from dotenv import load_dotenv
 from flask import (
     Flask, render_template, request,
-    redirect, url_for, session, flash
+    redirect, url_for, session
 )
 from werkzeug.security import check_password_hash
-
-from database import create_database
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text
 
 load_dotenv()
 
@@ -18,9 +17,39 @@ app.secret_key = os.environ.get("SECRET_KEY")
 ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME")
 ADMIN_PASSWORD_HASH = os.environ.get("ADMIN_PASSWORD_HASH")
 
-DATABASE = "aps_enterprises.db"
+# Supabase PostgreSQL connection
+database_url = os.environ.get("DATABASE_URL", "sqlite:///aps_enterprises.db")
 
-create_database()
+if database_url.startswith("postgres://"):
+    database_url = database_url.replace("postgres://", "postgresql://", 1)
+    database_url = database_url.replace(
+    "postgresql://", "postgresql+psycopg://", 1
+)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {"pool_pre_ping": True}
+
+db = SQLAlchemy(app)
+
+
+class Enquiry(db.Model):
+    __tablename__ = "enquiries"
+
+    id = db.Column(db.BigInteger, primary_key=True)
+    name = db.Column(db.Text, nullable=False)
+    phone = db.Column(db.Text, nullable=False)
+    email = db.Column(db.Text)
+    service = db.Column(db.Text, nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    created_at = db.Column(
+        db.DateTime(timezone=True),
+        server_default=db.func.now()
+    )
+
+
+with app.app_context():
+    db.create_all()
 
 
 @app.route("/")
@@ -47,16 +76,16 @@ def submit_enquiry():
     if len(service) > 100 or len(message) > 2000:
         return "Input is too long.", 400
 
-    conn = sqlite3.connect(DATABASE)
+    enquiry = Enquiry(
+        name=name,
+        phone=phone,
+        email=email,
+        service=service,
+        message=message
+    )
 
-    conn.execute("""
-        INSERT INTO enquiries
-        (name, phone, email, service, message)
-        VALUES (?, ?, ?, ?, ?)
-    """, (name, phone, email, service, message))
-
-    conn.commit()
-    conn.close()
+    db.session.add(enquiry)
+    db.session.commit()
 
     return """
     <h2>Thank you!</h2>
@@ -98,15 +127,22 @@ def admin_dashboard():
     if not session.get("admin_logged_in"):
         return redirect(url_for("admin_login"))
 
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
+    records = Enquiry.query.order_by(
+        Enquiry.created_at.desc()
+    ).all()
 
-    enquiries = conn.execute("""
-        SELECT * FROM enquiries
-        ORDER BY created_at DESC
-    """).fetchall()
-
-    conn.close()
+    enquiries = [
+        {
+            "id": item.id,
+            "name": item.name,
+            "phone": item.phone,
+            "email": item.email,
+            "service": item.service,
+            "message": item.message,
+            "created_at": item.created_at
+        }
+        for item in records
+    ]
 
     return render_template(
         "admin_dashboard.html",
