@@ -84,6 +84,33 @@ def home():
         ]
 
     return render_template("index.html", projects=projects)
+
+@app.route("/sitemap.xml")
+def sitemap():
+    from flask import Response
+
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://aps-enterprises.onrender.com/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>"""
+
+    return Response(xml, mimetype="application/xml")
+
+@app.route("/robots.txt")
+def robots():
+    from flask import Response
+
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://aps-enterprises.onrender.com/sitemap.xml
+"""
+    return Response(content, mimetype="text/plain")
+
 @app.route("/projects/<category>")
 def project_gallery(category):
 
@@ -146,10 +173,59 @@ def submit_enquiry():
     db.session.commit()
 
     return """
-    <h2>Thank you!</h2>
-    <p>Your enquiry has been submitted successfully.</p>
-    <a href="/">Back to Website</a>
-    """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Submitted | APS ENTERPRISES</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .success-box {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 420px;
+            margin: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,.1);
+        }
+        .success-icon {
+            font-size: 55px;
+            color: #16a34a;
+        }
+        h2 { color: #10233f; }
+        p { color: #555; line-height: 1.6; }
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 25px;
+            background: #10233f;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-box">
+        <div class="success-icon">&#10004;</div>
+        <h2>Thank You!</h2>
+        <p>Your enquiry has been submitted successfully.</p>
+        <p>APS ENTERPRISES will get in touch with you soon.</p>
+        <a href="/">Back to Website</a>
+    </div>
+</body>
+</html>
+"""
 
 
 # ADMIN LOGIN
